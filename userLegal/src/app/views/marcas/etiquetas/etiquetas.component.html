@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Gestionar Marcas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Seleccionar Marca</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label>Marca</ion-label>
+        <ion-select [(ngModel)]="selectedMarca" interface="popover" class="custom-select-button">
+          <ion-select-option *ngFor="let marca of marcas" [value]="marca">
+            {{ marca.nombre }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Porcentaje de Aumento</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label position="stacked">Porcentaje de Aumento</ion-label>
+        <ion-input type="number" [(ngModel)]="porcentajeAumento" placeholder="Ejemplo: 5 (equivale a un 5%)"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" class="ion-text-center custom-button" (click)="actualizarPrecios()">Actualizar Precios</ion-button>
+</ion-content>

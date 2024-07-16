@@ -1,0 +1,58 @@
+ion-content {
+  .product-list {
+    margin: 0;
+    padding: 0;
+  }
+
+ .pagination-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+ion-col {
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+
+ion-col strong {
+  font-weight: bold;
+}
+
+.add-button {
+  --background: transparent;
+  --color: white;
+  font-size: 2rem;
+}
+
+.add-button ion-icon {
+  font-size: 2rem;
+}
+
+img {
+  border-radius: 8px;
+}
+
+
+  ion-grid {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    overflow-x: auto;
+
+    ion-row {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+
+      ion-col {
+        padding: 10px;
+        text-align: center;
+        &:first-of-type {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,28 @@
+.custom-select-button {
+  --background: #3880ff; /* Cambia esto al color de fondo que prefieras */
+  --color: #fff; /* Color del texto */
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --border-radius: 4px;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-select-button ion-select {
+  background-color: var(--background);
+  color: var(--color);
+  padding: var(--padding-start) var(--padding-end);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.custom-button {
+  --background: #28a745; /* Cambia esto al color de fondo que prefieras */
+  --color: #fff;
+  --border-radius: 4px;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+ion-card {
+  margin-bottom: 20px;
+}
