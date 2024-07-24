@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Agregar Producto</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/productos"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="productoForm" (ngSubmit)="agregarOEditarProducto()">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Detalles del Producto</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="stacked">Nombre</ion-label>
+                <ion-input formControlName="nombre" placeholder="Ingresa el nombre del producto"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Descripción</ion-label>
+                <ion-input formControlName="descripcion" placeholder="Ingresa una descripción"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Precio</ion-label>
+                <ion-input type="number" formControlName="precio" placeholder="Ingresa el precio"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Descuento (%)</ion-label>
+                <ion-input type="number" formControlName="descuento" placeholder="Ingresa el descuento"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Precio Final</ion-label>
+                <ion-input type="number" formControlName="precioFinal" [disabled]="true" placeholder="Calculado automáticamente"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Código</ion-label>
+                <ion-input formControlName="codigo" placeholder="Ingresa el código"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Etiqueta</ion-label>
+                <ion-input formControlName="etiqueta" placeholder="Ingresa la etiqueta"></ion-input>
+              </ion-item>
+
+              <ion-item>
+  <ion-label position="stacked">Envío Gratis</ion-label>
+  <ion-toggle formControlName="envio"></ion-toggle>
+</ion-item>
+
+
+              <ion-item>
+                <ion-label position="stacked">Categoría</ion-label>
+                <ion-select formControlName="categoria" placeholder="Selecciona una categoría">
+                  <ion-select-option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria.nombre }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Marca</ion-label>
+                <ion-select formControlName="marca" placeholder="Selecciona una marca">
+                  <ion-select-option *ngFor="let marca of marcas" [value]="marca">{{ marca.nombre }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Imagen</ion-label>
+                <input type="file" (change)="onFileSelected($event)">
+              </ion-item>
+            </ion-card-content>
+
+            <ion-footer>
+              <ion-button expand="full" type="submit">Agregar</ion-button>
+            </ion-footer>
+          </ion-card>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -28,6 +28,19 @@ export const routes: Routes = [
     path: 'productos',
     loadComponent: () => import('../app/views/marcas/proucto/producto/producto.component').then((m) => m.ProductosPage),
   },
+   {
+    path: 'agregarProducto',
+    loadComponent: () => import('../app/views/marcas/agregar-producto/agregar-producto.component').then((m) => m.AgregarProductoPage),
+  },
+   {
+    path: 'agregar-categoria',
+    loadComponent: () => import('../app/views/marcas/agregar-categoria/agregar-categoria.component').then((m) => m.AgregarCategoriaComponent),
+  },
+  {
+    path: 'agregar-marca',
+    loadComponent: () => import('../app/views/marcas/agregar-marca/agregar-marca.component').then((m) => m.AgregarMarcaComponent),
+  },
+
     {
     path: 'productosOferta',
     loadComponent: () => import('../app/views/marcas/oferta-product/oferta-product.component').then((m) => m.OfertaProductComponent),

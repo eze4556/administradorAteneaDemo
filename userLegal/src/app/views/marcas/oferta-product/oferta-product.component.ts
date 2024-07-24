@@ -30,7 +30,7 @@ import {
 IonModal,
   IonToolbar,
   IonTitle,
-  IonHeader, IonBackButton, IonButtons, IonSpinner, IonSelectOption, IonSelect, IonSearchbar, IonAvatar } from '@ionic/angular/standalone';
+  IonHeader, IonBackButton, IonButtons, IonSpinner, IonSelectOption, IonSelect, IonSearchbar, IonAvatar,IonToggle, } from '@ionic/angular/standalone';
 
 
 @Component({
@@ -60,7 +60,7 @@ IonModal,
     IonSelectOption,
     IonSelect,
     IonSearchbar,
-    IonButton],
+    IonButton, IonToggle],
   selector: 'app-oferta-product',
   templateUrl: './oferta-product.component.html',
   styleUrls: ['./oferta-product.component.scss'],
@@ -101,7 +101,8 @@ constructor(
       etiqueta: [''],
       categoria: [null, Validators.required],
       marca: [null, Validators.required],
-      imagen: ['']
+      imagen: [''],
+        envio: [false] // Valor por defecto es false
     });
 
 

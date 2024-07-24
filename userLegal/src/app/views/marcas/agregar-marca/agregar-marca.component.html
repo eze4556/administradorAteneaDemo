@@ -1,0 +1,29 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agregar Marcas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+ <ion-content>
+        <form [formGroup]="marcaForm" (ngSubmit)="agregarOEditarMarca()">
+
+          <ion-item>
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input formControlName="nombre"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Imagen</ion-label>
+            <input type="file" (change)="onFileSelected($event)">
+          </ion-item>
+          <ion-footer>
+            <ion-button expand="full" type="submit">{{ editMode ? 'Actualizar' : 'Agregar' }}</ion-button>
+          </ion-footer>
+        </form>
+      </ion-content>

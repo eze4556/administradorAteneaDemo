@@ -1,13 +1,13 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {  LoadingController } from '@ionic/angular';
+import {   LoadingController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { FirestoreService } from '../../../../common/services/firestore.service';
-import { Producto } from '../../../../common/models/producto.model';
+import { FirestoreService } from '../../../common/services/firestore.service';
+import { Producto } from '../../../common/models/producto.model';
 import { AlertController } from '@ionic/angular';
 import { FormsModule, FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Marca } from '../../../../common/models/marca.model';
-import { Categoria } from '../../../../common/models/categoria.model';
+import { Marca } from '../../../common/models/marca.model';
+import { Categoria } from '../../../common/models/categoria.model';
 import {  DocumentData } from '@angular/fire/compat/firestore';
 import { DocumentReference } from '@angular/fire/firestore';
 import {
@@ -20,6 +20,7 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  IonToggle,
 
   IonCard,
   IonCardHeader,
@@ -33,11 +34,10 @@ IonFabButton,
   IonToolbar,
   IonTitle,
   IonHeader, IonBackButton, IonButtons, IonSpinner, IonSelectOption, IonSelect, IonSearchbar, IonAvatar, IonFab } from '@ionic/angular/standalone';
-import { Router } from '@angular/router'; // Importar RouterModule
 
 
 @Component({
-  standalone: true,
+    standalone: true,
   imports: [IonFab, IonFabButton, CommonModule, FormsModule, ReactiveFormsModule,IonAvatar, IonSearchbar, IonSpinner, IonButtons, IonBackButton,
     IonHeader,
     IonTitle,
@@ -46,7 +46,6 @@ import { Router } from '@angular/router'; // Importar RouterModule
     IonIcon,
     IonInput,
     IonLabel,
-
     IonContent,
     IonGrid,
     IonFooter,
@@ -64,12 +63,13 @@ import { Router } from '@angular/router'; // Importar RouterModule
     IonSelectOption,
     IonSelect,
     IonSearchbar,
+    IonToggle,
     IonButton],
-  selector: 'app-productos',
-  templateUrl: './producto.component.html',
-  styleUrls: ['./producto.component.scss'],
+  selector: 'app-agregar-producto',
+  templateUrl: './agregar-producto.component.html',
+  styleUrls: ['./agregar-producto.component.scss'],
 })
-export class ProductosPage implements OnInit {
+export class AgregarProductoPage implements OnInit {
   productos: Producto[] = [];
   categorias: Categoria[] = [];
   marcas: Marca[] = [];
@@ -94,8 +94,7 @@ export class ProductosPage implements OnInit {
     private alertController: AlertController,
     private fb: FormBuilder,
     private loadingController: LoadingController,
-    private changeDetectorRef: ChangeDetectorRef,
-    private router: Router
+    private changeDetectorRef: ChangeDetectorRef
   ) {
     this.productoForm = this.fb.group({
       id: [''],
@@ -108,7 +107,9 @@ export class ProductosPage implements OnInit {
       etiqueta: [''],
       categoria: [null, Validators.required],
       marca: [null, Validators.required],
-      imagen: ['']
+      imagen: [''],
+      envio: [false] // Valor por defecto es false
+
     });
 
 
@@ -125,10 +126,6 @@ export class ProductosPage implements OnInit {
     this.cargarProductos();
     this.cargarMarcas();
     this.cargarCategorias();
-  }
-
-   goToAgregarProducto() {
-    this.router.navigate(['/agregarProducto']);
   }
 
   calcularPrecioFinal() {

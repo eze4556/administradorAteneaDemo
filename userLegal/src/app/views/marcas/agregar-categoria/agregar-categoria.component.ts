@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {   LoadingController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { FirestoreService } from '../../../../common/services/firestore.service';
-import { Categoria } from '../../../../common/models/categoria.model';
+import { FirestoreService } from '../../../common/services/firestore.service';
+import { Categoria } from '../../../common/models/categoria.model';
 import { AlertController } from '@ionic/angular';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -27,7 +27,10 @@ import {
   IonToolbar,
   IonTitle,
   IonHeader, IonBackButton, IonButtons, IonSpinner, IonSelectOption, IonSelect, IonSearchbar, IonAvatar } from '@ionic/angular/standalone';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
+
+
 
 @Component({
   standalone: true,
@@ -56,12 +59,12 @@ import { Router } from '@angular/router';
     IonSelectOption,
     IonSelect,
     IonButton],
-  selector: 'app-categorias',
-  templateUrl: './categoria.component.html',
-  styleUrls: ['./categoria.component.scss'],
+  selector: 'app-agregar-categoria',
+  templateUrl: './agregar-categoria.component.html',
+  styleUrls: ['./agregar-categoria.component.scss'],
 })
-export class CategoriasPage implements OnInit {
-  categorias: Categoria[] = [];
+export class AgregarCategoriaComponent  implements OnInit {
+ categorias: Categoria[] = [];
      nuevaCategoria: Categoria = { nombre: '', imagen: '' };
   categoriaForm: FormGroup;
   isModalOpen: boolean = false;
@@ -101,7 +104,7 @@ export class CategoriasPage implements OnInit {
   }
 
     goToAgregarProducto() {
-    this.router.navigate(['/agregar-categoria']);
+    this.router.navigate(['/agregarCategoria']);
   }
 
    onWillDismiss(event: Event) {

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+        <ion-title style="margin-left: 500px ;"> Agregar Categoria</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="categoriaForm" (ngSubmit)="agregarOEditarCategoria()">
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Imagen</ion-label>
+      <input type="file" (change)="onFileSelected($event)">
+    </ion-item>
+    <ion-footer>
+      <ion-button expand="full" type="submit">{{ editMode ? 'Actualizar' : 'Agregar' }}</ion-button>
+    </ion-footer>
+  </form>
+</ion-content>

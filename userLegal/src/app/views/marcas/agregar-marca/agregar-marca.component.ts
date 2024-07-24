@@ -3,8 +3,8 @@ import { FormGroup, FormsModule,FormBuilder, ReactiveFormsModule, Validators } f
 
 import { Component, OnInit, ViewChild,ChangeDetectorRef } from '@angular/core';
 import {  LoadingController } from '@ionic/angular';
-import { FirestoreService } from '../../common/services/firestore.service';
-import { Marca } from '../../common/models/marca.model';
+import { FirestoreService } from '../../../common/services/firestore.service';
+import { Marca } from '../../../common/models/marca.model';
 import { AlertController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 
@@ -30,8 +30,9 @@ import {
   IonHeader, IonBackButton, IonButtons, IonSpinner, IonSelectOption, IonSelect, IonSearchbar, IonAvatar } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 
+
 @Component({
- standalone: true,
+   standalone: true,
   imports: [ CommonModule, FormsModule, ReactiveFormsModule,IonAvatar, IonSearchbar, IonSpinner, IonButtons, IonBackButton,
     IonHeader,
     IonIcon,
@@ -57,12 +58,12 @@ import { Router } from '@angular/router';
     IonSelectOption,
     IonSelect,
     IonButton],
-  selector: 'app-marcas',
-  templateUrl: './marcas.component.html',
-  styleUrls: ['./marcas.component.scss'],
+  selector: 'app-agregar-marca',
+  templateUrl: './agregar-marca.component.html',
+  styleUrls: ['./agregar-marca.component.scss'],
 })
-export class MarcasPage implements OnInit {
-    marcas: Marca[] = [];
+export class AgregarMarcaComponent  implements OnInit {
+ marcas: Marca[] = [];
   nuevaMarca: Marca = { nombre: '', imagen: '' };
   imagenMarca: File | null = null;
    isModalOpen: boolean = false;
@@ -82,8 +83,7 @@ marcaAEditar: Marca | null = null;
     private fb: FormBuilder,
     private loadingController: LoadingController,
     private changeDetectorRef: ChangeDetectorRef,
-        private router: Router
-
+    private router: Router
   ) {
     this.marcaForm = this.fb.group({
   id: [''],
@@ -249,11 +249,5 @@ async eliminarMarca(marca: Marca) {
     });
     await alert.present();
   }
-
-
-      goToAgregarProducto() {
-    this.router.navigate(['/agregar-marca']);
-  }
-
 
 }

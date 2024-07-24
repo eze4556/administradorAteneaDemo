@@ -12,4 +12,6 @@ export interface Productoferta {
   categoria: DocumentReference; // Referencia a la categoría
   marca: DocumentReference;    // Referencia a la marca
   imagen: string;              // URL de la imagen
+    envio:boolean;
+
 }

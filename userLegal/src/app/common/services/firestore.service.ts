@@ -251,6 +251,7 @@ export class FirestoreService {
         categoria: data['categoria'],
         marca: data['marca'],
         imagen: data['imagen'] || null, // Manejar imagen opcional
+        envio:data['envio']
       } as Producto;
     });
   }
@@ -317,6 +318,7 @@ export class FirestoreService {
       categoria: data['categoria'],
       marca: data['marca'],
       imagen: data['imagen'] || null, // Manejar imagen opcional
+      envio:data['envio']
     } as Productoferta;
   });
 }
